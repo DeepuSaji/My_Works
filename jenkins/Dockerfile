@@ -9,6 +9,4 @@ RUN apt-get update && apt-get install -y git curl sudo && \
 
 RUN apt-get update && apt-get install -y docker.io && apt-get clean
 
-USER jenkins
-
 EXPOSE 8081 50000
