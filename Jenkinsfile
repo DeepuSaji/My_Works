@@ -11,8 +11,12 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                // checkout scm
-                git branch: 'master', url: 'https://github.com/DeepuSaji/My_Works.git'
+                checkout([
+                    $class: 'GitSCM',
+                    branches: [[name: '*/master']], // or */master
+                    extensions: [],
+                    userRemoteConfigs: [[url: 'https://github.com/DeepuSaji/My_Works.git']]
+                ])
             }
         }
 
