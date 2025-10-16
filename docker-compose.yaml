@@ -19,3 +19,21 @@ services:
       - ./server:/usr/src/app
       - /usr/src/app/node_modules
     command: npm run dev
+  jenkins:
+    build: 
+      context: ./jenkins
+    container_name: jenkins
+    ports:
+      - "8081:8080"
+      - "50000:50000"
+    volumes:
+      - ../volumes/jenkins_home:/var/jenkins_home
+      - /var/run/docker.sock:/var/run/docker.sock # Optional for Docker builds
+    networks:
+      - jenkins_network
+    restart: unless-stopped
+networks:
+  jenkins_network:
+    driver: bridge
+volumes:
+  jenkins_home: {}
