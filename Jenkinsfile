@@ -11,7 +11,8 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                checkout scm
+                // checkout scm
+                git branch: 'master', url: 'https://github.com/DeepuSaji/My_Works.git'
             }
         }
 
