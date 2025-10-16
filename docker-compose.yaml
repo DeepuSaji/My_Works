@@ -1,0 +1,21 @@
+version: "3.9"
+services:
+  web:
+    build: ./web
+    container_name: web_server
+    restart: unless-stopped
+    ports:
+      - "8080:80"
+    volumes:
+      - ./web:/usr/share/nginx/html
+  nodeapp:
+    build:
+      context: ./server
+    ports:
+      - "3000:3000"
+    container_name: node_app
+    restart: unless-stopped
+    volumes:
+      - ./server:/usr/src/app
+      - /usr/src/app/node_modules
+    command: npm run dev
