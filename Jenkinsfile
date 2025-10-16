@@ -40,14 +40,14 @@ pipeline {
         stage('Deploy Containers') {
             steps {
                 // Stop old containers (if they exist)
-                sh 'docker rm -f backend-container || true'
-                sh 'docker rm -f frontend-container || true'
+                sh 'docker rm -f node_app || true'
+                sh 'docker rm -f web_server || true'
 
                 // Run backend on port 3000
-                sh 'docker run -d -p 3000:3000 --name backend-container $BACKEND_IMAGE'
+                sh 'docker run -d -p 3000:3000 --name node_app $BACKEND_IMAGE'
 
                 // Run frontend on port 8080 (mapped from nginx 80)
-                sh 'docker run -d -p 8080:80 --name frontend-container $FRONTEND_IMAGE'
+                sh 'docker run -d -p 8080:80 --name web_server $FRONTEND_IMAGE'
             }
         }
     }
