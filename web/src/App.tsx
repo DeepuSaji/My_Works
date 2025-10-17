@@ -67,7 +67,7 @@ const App: React.FC = () => {
 
   return (
     <div className="app">
-      <h1>User Management CRUD</h1>
+      <h1>User Management CRUD(simple application)</h1>
       
       {message && <div className={`message ${message.type}`}>{message.text}</div>}
       
